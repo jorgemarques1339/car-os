@@ -98,15 +98,16 @@
 
 /* Novo Destaque do Carro (Limpo e Minimalista mas Destacado) */
 .dock-icon-btn.car-highlight {
-  color: var(--accent-color); /* Um verde ou azul da marca */
-  background: rgba(29, 185, 84, 0.15); /* Fundo com opacidade baixa da mesma cor */
-  border: 1px solid rgba(29, 185, 84, 0.3);
-  box-shadow: 0 0 10px rgba(29, 185, 84, 0.2);
+  color: white;
+  background: rgba(255, 255, 255, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .dock-icon-btn.car-highlight:hover {
-  background: rgba(29, 185, 84, 0.25);
-  box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Esconder scrollbar na doca central */
