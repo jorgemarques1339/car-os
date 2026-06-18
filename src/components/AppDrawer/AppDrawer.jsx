@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCarStore } from '../../store/useCarStore';
-import { Music, Map, Settings, Camera, Gamepad2, Phone, Calendar, Video, Book, Compass, MessageSquare, Zap } from 'lucide-react';
+import { Music, Map, Settings, Camera, Gamepad2, Phone, Calendar, Video, Book, Compass, MessageSquare, Zap, Tv, Radio, MonitorPlay, Navigation } from 'lucide-react';
 import './AppDrawer.css';
 
 export default function AppDrawer() {
