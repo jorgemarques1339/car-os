@@ -22,10 +22,10 @@ const SortableItem = ({ id, icon: Icon, onClick, isActive }) => {
       style={style} 
       {...attributes} 
       {...listeners} 
-      className={`dock-icon-btn ${isActive ? 'active' : ''}`} 
+      className={`dock-icon-btn ${isActive ? 'active' : ''} ${id === 'car' ? 'car-highlight' : ''}`} 
       onClick={onClick}
     >
-      <Icon size={28} />
+      <Icon size={id === 'car' ? 32 : 28} />
     </button>
   );
 };
@@ -60,15 +60,14 @@ export default function BottomDock() {
     toast(defrosterActive ? 'Desembaçador Desligado' : 'Desembaçador Ligado (Potência Máxima)');
   };
 
-  const [dockOrder, setDockOrder] = useState(['appdrawer', 'car', 'wind', 'volume', 'camera', 'settings']);
+  const [dockOrder, setDockOrder] = useState(['car', 'wind', 'volume', 'camera', 'appdrawer']);
 
   const dockConfig = {
-    appdrawer: { icon: Grid3x3, action: toggleAppDrawer },
     car: { icon: Car, action: toggleControlCenter },
     wind: { icon: Wind, action: handleDefrosterClick, isActive: defrosterActive },
     volume: { icon: isMuted ? VolumeX : Volume2, action: handleVolumeClick, isActive: isMuted },
     camera: { icon: Camera, action: handleCameraClick },
-    settings: { icon: Settings, action: handleSettingsClick },
+    appdrawer: { icon: Grid3x3, action: toggleAppDrawer },
   };
 
   const renderSeatHeater = (level, toggle) => {
