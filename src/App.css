@@ -1,0 +1,15 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--bg-color);
+}
+
+.main-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-bottom: var(--dock-height); /* Make space for the absolute positioned dock */
+}

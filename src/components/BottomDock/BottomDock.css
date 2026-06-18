@@ -1,0 +1,97 @@
+.bottom-dock {
+  height: var(--dock-height);
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--panel-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.climate-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.temp-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.temp-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.temp-display {
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  width: 80px;
+  text-align: center;
+}
+
+.seat-heater {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.seat-heater:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.seat-heater.level-1,
+.seat-heater.level-2,
+.seat-heater.level-3 {
+  color: var(--danger-color);
+}
+
+.center-icons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dock-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dock-icon-btn:hover {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.dock-icon-btn.active {
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
