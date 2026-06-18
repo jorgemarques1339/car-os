@@ -39,12 +39,11 @@ export default function BottomDock() {
     toggleHeatedSeatDriver, toggleHeatedSeatPassenger,
     defrosterActive, toggleDefroster,
     toggleControlCenter, toggleAppDrawer,
-    setGear, isMuted, toggleMute
+    setGear, isMuted, toggleMute, toggleCamera
   } = useCarStore();
 
   const handleCameraClick = () => {
-    setGear('R');
-    toast('Câmera Traseira Ativada via Dock');
+    toggleCamera();
   };
 
   const handleVolumeClick = () => {

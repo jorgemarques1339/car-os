@@ -1,17 +1,11 @@
 .camera-app-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 600px;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--panel-border);
-  border-radius: 24px;
-  z-index: 9995; /* Fica por cima de quase tudo */
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  z-index: 9999; /* Por cima de tudo */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -188,9 +182,9 @@
 /* Responsividade */
 @media (max-width: 1024px) {
   .camera-app-container {
-    width: 95%;
-    height: 80vh;
-    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
   }
   
   .camera-controls {
