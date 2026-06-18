@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCarStore } from '../../store/useCarStore';
-import { Lock, Unlock, Zap, Car, Settings, Shield, MonitorSmartphone, Bluetooth } from 'lucide-react';
+import { Lock, Unlock, Zap, Car, Settings, Shield, MonitorSmartphone, Bluetooth, Box } from 'lucide-react';
 import './ControlCenter.css';
 
 export default function ControlCenter() {
-  const { isControlCenterOpen, toggleControlCenter, doorsLocked, toggleDoors } = useCarStore();
+  const { isControlCenterOpen, toggleControlCenter, doorsLocked, toggleDoors, toggleGloveboxPin } = useCarStore();
   const [activeTab, setActiveTab] = useState('quick');
 
   const tabs = [
@@ -40,6 +40,10 @@ export default function ControlCenter() {
               <div className="cc-btn">
                 <Bluetooth size={28} />
                 <span>Bluetooth</span>
+              </div>
+              <div className="cc-btn" onClick={toggleGloveboxPin}>
+                <Box size={28} />
+                <span>Glovebox</span>
               </div>
             </div>
           </>

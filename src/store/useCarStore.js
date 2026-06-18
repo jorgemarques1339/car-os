@@ -29,6 +29,12 @@ export const useCarStore = create((set) => ({
     artist: 'The Weeknd, Daft Punk',
     cover: 'https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452'
   },
+  
+  // Phase 6 Apps State
+  isCameraOpen: false,
+  isGloveboxPinScreenOpen: false,
+  isEnergyAppOpen: false,
+  energyHistory: Array(20).fill({ time: '', value: 0 }),
 
   // Actions
   // Vehicle Actions
@@ -41,8 +47,17 @@ export const useCarStore = create((set) => ({
   toggleClimateMenu: () => set((state) => ({ isClimateMenuOpen: !state.isClimateMenuOpen })),
   toggleAppDrawer: () => set((state) => ({ isAppDrawerOpen: !state.isAppDrawerOpen })),
   toggleMediaCenter: () => set((state) => ({ isMediaCenterOpen: !state.isMediaCenterOpen })),
+  toggleCamera: () => set((state) => ({ isCameraOpen: !state.isCameraOpen })),
+  toggleGloveboxPin: () => set((state) => ({ isGloveboxPinScreenOpen: !state.isGloveboxPinScreenOpen })),
+  toggleEnergyApp: () => set((state) => ({ isEnergyAppOpen: !state.isEnergyAppOpen })),
   toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
   togglePlay: () => set((state) => ({ isPlaying: !state.isPlaying })),
+  
+  // Energy Tracking
+  addEnergyData: (value) => set((state) => {
+    const newHistory = [...state.energyHistory.slice(1), { time: new Date().toLocaleTimeString(), value }];
+    return { energyHistory: newHistory };
+  }),
   
   // Climate Actions
   increaseDriverTemp: () => set((state) => ({ driverTemp: Math.min(state.driverTemp + 0.5, 30) })),

@@ -1,22 +1,30 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCarStore } from '../../store/useCarStore';
-import { Music, Radio, MonitorPlay, Tv, Navigation, MessageSquare, Gamepad2, Calendar } from 'lucide-react';
+import { Music, Map, Settings, Camera, Gamepad2, Phone, Calendar, Video, Book, Compass, MessageSquare, Zap } from 'lucide-react';
 import './AppDrawer.css';
 
 export default function AppDrawer() {
-  const { isAppDrawerOpen, toggleAppDrawer, toggleMediaCenter } = useCarStore();
+  const { isAppDrawerOpen, toggleAppDrawer, toggleMediaCenter, toggleCamera } = useCarStore();
 
   const handleAppClick = (appName) => {
     toggleAppDrawer(); // Fecha a gaveta
     if (appName === 'Spotify') {
       toggleMediaCenter();
     }
+    if (appName === 'Câmaras') {
+      toggleCamera();
+    }
+    if (appName === 'Energia') {
+      toggleEnergyApp();
+    }
   };
 
   const apps = [
     { name: 'Spotify', icon: Music, color: '#1DB954' },
-    { name: 'Radio', icon: Radio, color: '#F59E0B' },
+    { name: 'Câmaras', icon: Camera, color: '#333' },
+    { name: 'Energia', icon: Zap, color: '#1DB954' },
+    { name: 'Arcade', icon: Gamepad2, color: '#E1306C' },
     { name: 'Netflix', icon: Tv, color: '#E50914' },
     { name: 'YouTube', icon: MonitorPlay, color: '#FF0000' },
     { name: 'Nav', icon: Navigation, color: '#3B82F6' },

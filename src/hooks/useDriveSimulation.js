@@ -42,14 +42,21 @@ export function useDriveSimulation() {
       const acceleration = 40; // km/h por segundo
       const braking = 80; // km/h por segundo
       const friction = 10; // km/h por segundo
+      
+      let energyCurrent = 0;
 
       if (keys.current.w) {
         currentSpeed += acceleration * delta;
+        energyCurrent = 50; // Consumo alto
       } else if (keys.current.s) {
         currentSpeed -= braking * delta;
+        if (currentSpeed > 0) energyCurrent = -30; // Regeneração
       } else {
         // Natural friction
-        if (currentSpeed > 0) currentSpeed -= friction * delta;
+        if (currentSpeed > 0) {
+          currentSpeed -= friction * delta;
+          energyCurrent = 5; // Consumo passivo
+        }
         if (currentSpeed < 0) currentSpeed += friction * delta;
       }
 
@@ -77,6 +84,15 @@ export function useDriveSimulation() {
       const roundedSpeed = Math.round(currentSpeed);
       if (roundedSpeed !== useCarStore.getState().speed) {
         useCarStore.getState().setSpeed(roundedSpeed);
+      }
+
+      // Atualizar o gráfico de energia a cada 1 segundo (usando delta time rudimentar)
+      // Como não guardamos lastEnergyTime global, usamos a mudança de Segundos real do relógio
+      const currentSecond = new Date().getSeconds();
+      if (!keys.current.lastSec || keys.current.lastSec !== currentSecond) {
+        keys.current.lastSec = currentSecond;
+        if (currentSpeed === 0) energyCurrent = 0;
+        useCarStore.getState().addEnergyData(energyCurrent);
       }
 
       animationFrameId = requestAnimationFrame(loop);

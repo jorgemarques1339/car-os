@@ -9,6 +9,9 @@ import ControlCenter from './components/ControlCenter/ControlCenter';
 import ClimateScreen from './components/ClimateScreen/ClimateScreen';
 import AppDrawer from './components/AppDrawer/AppDrawer';
 import MediaCenter from './components/MediaCenter/MediaCenter';
+import CameraApp from './components/CameraApp/CameraApp';
+import GloveboxPin from './components/Glovebox/GloveboxPin';
+import EnergyApp from './components/EnergyApp/EnergyApp';
 import { useDriveSimulation } from './hooks/useDriveSimulation';
 import './App.css';
 
@@ -25,6 +28,9 @@ function App() {
       <ClimateScreen />
       <AppDrawer />
       <MediaCenter />
+      <CameraApp />
+      <GloveboxPin />
+      <EnergyApp />
       <div className="main-content">
         <motion.div 
           layout 

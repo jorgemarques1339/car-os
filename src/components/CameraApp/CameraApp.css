@@ -1,0 +1,204 @@
+.camera-app-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  z-index: 9995; /* Fica por cima de quase tudo */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.camera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.camera-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.camera-title h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+}
+
+.recording-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  margin-left: 1rem;
+  animation: pulse-red 1.5s infinite;
+}
+
+.recording-text {
+  color: #ff3b30;
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+}
+
+@keyframes pulse-red {
+  0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
+  70% { opacity: 0.5; box-shadow: 0 0 0 10px rgba(255, 59, 48, 0); }
+  100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+}
+
+.camera-body {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.camera-feed-wrapper {
+  flex: 1;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.camera-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0,0,0,0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: white;
+  z-index: 10;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.video-overlay-data {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,0.8);
+  font-family: monospace;
+  font-size: var(--font-size-base);
+  z-index: 10;
+}
+
+/* Simulação de Noise para o Video Feed vazio */
+.video-simulation {
+  width: 100%;
+  height: 100%;
+  background: repeating-radial-gradient(#111 0 0.0001%, #222 0 0.0002%) 50% 0/2500px 2500px, repeating-conic-gradient(#111 0 0.0001%, #222 0 0.0002%) 50% 50%/2500px 2500px;
+  background-blend-mode: difference;
+  opacity: 0.8;
+  animation: staticNoise 0.2s infinite alternate;
+}
+
+@keyframes staticNoise {
+  0% { transform: scale(1.01) translate(1px, -1px); }
+  100% { transform: scale(1.02) translate(-1px, 1px); }
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cam-view-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: var(--font-size-base);
+}
+
+.cam-view-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.cam-view-btn.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.camera-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.sentry-alert-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 59, 48, 0.2);
+  color: #ff3b30;
+  border: 1px solid rgba(255, 59, 48, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sentry-alert-btn:hover {
+  background: rgba(255, 59, 48, 0.4);
+}
+
+.camera-footer p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .camera-app-container {
+    width: 95%;
+    height: 80vh;
+    border-radius: 16px;
+  }
+  
+  .camera-controls {
+    flex-wrap: wrap;
+  }
+  
+  .cam-view-btn {
+    flex: 1 1 40%;
+    justify-content: center;
+  }
+}
