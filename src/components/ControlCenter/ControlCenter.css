@@ -200,3 +200,5 @@
 .software-update-btn:hover {
   background: rgba(255,255,255,0.2);
 }
+ 
+@media (max-width: 1024px) { .control-center-panel { width: 100%; left: 0; } .cc-layout { flex-direction: column; } .cc-sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; } .cc-tab-btn { white-space: nowrap; } .cc-content-area { padding: 1.5rem; } }

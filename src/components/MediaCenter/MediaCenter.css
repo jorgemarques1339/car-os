@@ -169,3 +169,5 @@
 .media-play-btn:active {
   transform: scale(0.95);
 }
+ 
+@media (max-width: 1024px) { .media-center-container { width: 95%; left: 2.5%; top: 50%; transform: translateY(-50%); height: auto; } .media-big-cover { width: 200px; height: 200px; } }

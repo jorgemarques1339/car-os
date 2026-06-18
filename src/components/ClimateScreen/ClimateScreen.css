@@ -153,3 +153,5 @@
   cursor: pointer;
   box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
 }
+ 
+@media (max-width: 1024px) { .climate-screen-container { width: 95%; height: 90vh; top: 5%; padding: 1rem; } .climate-content { flex-direction: column; } .climate-car-container { width: 100%; height: 40vh; } .climate-controls-side { width: 100%; height: auto; } .temp-controls { flex-wrap: wrap; } }

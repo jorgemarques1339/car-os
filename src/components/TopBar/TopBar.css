@@ -48,3 +48,5 @@
   font-weight: 600;
   color: var(--text-primary);
 }
+ 
+@media (max-width: 1024px) { .topbar { padding: 0.5rem 1rem; } .profile-name { display: none; } }

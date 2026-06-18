@@ -66,3 +66,5 @@
   color: var(--text-primary);
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
+ 
+@media (max-width: 1024px) { .app-drawer-container { width: 95%; left: 2.5%; padding: 2rem 1rem; } .app-drawer-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }

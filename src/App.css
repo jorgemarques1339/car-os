@@ -13,3 +13,5 @@
   width: 100%;
   padding-bottom: var(--dock-height); /* Make space for the absolute positioned dock */
 }
+ 
+@media (max-width: 1024px) { .main-content { flex-direction: column; } }
