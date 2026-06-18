@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCarStore } from '../../store/useCarStore';
-import { X, Camera, Video, AlertCircle } from 'lucide-react';
+import { X, Camera, Video, AlertCircle, Grid3x3 } from 'lucide-react';
 import './CameraApp.css';
 
 export default function CameraApp() {
   const { isCameraOpen, toggleCamera } = useCarStore();
-  const [activeView, setActiveView] = useState('Front');
+  const [activeView, setActiveView] = useState('Grid');
 
-  // Placeholders para vídeos (estamos a usar imagens com ratio de vídeo ou divs com CSS animation)
   const views = ['Front', 'Rear', 'Left', 'Right'];
 
   return (
@@ -34,19 +33,36 @@ export default function CameraApp() {
           </div>
 
           <div className="camera-body">
-            <div className="camera-feed-wrapper">
-              <div className="camera-feed">
-                <p className="camera-label">{activeView} Camera</p>
-                {/* Simulação de um feed de video correndo (Noise effect no CSS) */}
-                <div className="video-simulation noise"></div>
-                <div className="video-overlay-data">
-                  <span>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</span>
-                  <span>14 km/h</span>
+            {activeView === 'Grid' ? (
+              <div className="camera-grid">
+                {views.map(view => (
+                  <div key={view} className="camera-feed grid-item" onClick={() => setActiveView(view)}>
+                    <p className="camera-label">{view}</p>
+                    <div className="video-simulation noise"></div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="camera-feed-wrapper fullscreen-feed">
+                <div className="camera-feed">
+                  <p className="camera-label">{activeView} Camera</p>
+                  <div className="video-simulation noise"></div>
+                  <div className="video-overlay-data">
+                    <span>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</span>
+                    <span>14 km/h</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div className="camera-controls">
+              <button 
+                className={`cam-view-btn ${activeView === 'Grid' ? 'active' : ''}`}
+                onClick={() => setActiveView('Grid')}
+              >
+                <Grid3x3 size={20} />
+                <span>All</span>
+              </button>
               {views.map(view => (
                 <button 
                   key={view}
