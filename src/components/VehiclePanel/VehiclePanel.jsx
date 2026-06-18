@@ -1,12 +1,13 @@
 import React from 'react';
 import { useCarStore } from '../../store/useCarStore';
-import { Battery, Lock, Unlock, Lightbulb, View } from 'lucide-react';
+import { BatteryMedium, Zap, Lock, Unlock, Lightbulb, View } from 'lucide-react';
 import { toast } from 'sonner';
 import Car3DModel from './Car3DModel';
 import './VehiclePanel.css';
 
 export default function VehiclePanel() {
-  const { speed, gear, batteryLevel, range, doorsLocked, toggleDoors, setGear } = useCarStore();
+  const { speed, gear, batteryLevel, range, doorsLocked, toggleDoors, setGear, energyHistory } = useCarStore();
+  const avgConsumption = Math.round(energyHistory.reduce((acc, curr) => acc + curr.value, 0) / (energyHistory.length || 1));
 
   const handleGearChange = (g) => {
     setGear(g);
@@ -58,10 +59,17 @@ export default function VehiclePanel() {
           </button>
         </div>
         
-        <div className="battery-info">
-          <Battery size={24} className="battery-icon" color={batteryLevel > 20 ? 'var(--success-color)' : 'var(--danger-color)'} />
-          <span className="battery-text">{batteryLevel}%</span>
-          <span className="range-text">{range} km</span>
+        <div className="battery-widget">
+          <div className="battery-level">
+            <BatteryMedium size={24} className="battery-icon" color={batteryLevel > 20 ? 'var(--success-color)' : 'var(--danger-color)'} />
+            <span className="battery-text" style={{ color: batteryLevel > 20 ? "white" : "var(--danger-color)" }}>
+              {batteryLevel.toFixed(1)}%
+            </span>
+          </div>
+          <div className="avg-consumption">
+            <Zap size={16} color="var(--text-secondary)" />
+            <span>Média: {avgConsumption} kW</span>
+          </div>
         </div>
       </div>
 

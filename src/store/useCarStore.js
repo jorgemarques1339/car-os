@@ -35,6 +35,7 @@ export const useCarStore = create((set) => ({
   isGloveboxPinScreenOpen: false,
   isEnergyAppOpen: false,
   energyHistory: Array(20).fill({ time: '', value: 0 }),
+  batteryLevel: 84, // Percentagem
 
   // Actions
   // Vehicle Actions
@@ -56,7 +57,13 @@ export const useCarStore = create((set) => ({
   // Energy Tracking
   addEnergyData: (value) => set((state) => {
     const newHistory = [...state.energyHistory.slice(1), { time: new Date().toLocaleTimeString(), value }];
-    return { energyHistory: newHistory };
+    // Drain bateria devagarinho com consumo positivo
+    let newBattery = state.batteryLevel;
+    if (value > 0) newBattery -= 0.001; // Consumo
+    if (value < 0) newBattery += 0.0005; // Regeneração
+    if (newBattery < 0) newBattery = 0;
+    if (newBattery > 100) newBattery = 100;
+    return { energyHistory: newHistory, batteryLevel: newBattery };
   }),
   
   // Climate Actions

@@ -5,7 +5,7 @@ import { Music, Map, Settings, Camera, Gamepad2, Phone, Calendar, Video, Book, C
 import './AppDrawer.css';
 
 export default function AppDrawer() {
-  const { isAppDrawerOpen, toggleAppDrawer, toggleMediaCenter, toggleCamera } = useCarStore();
+  const { isAppDrawerOpen, toggleAppDrawer, toggleMediaCenter, toggleCamera, toggleEnergyApp } = useCarStore();
 
   const handleAppClick = (appName) => {
     toggleAppDrawer(); // Fecha a gaveta
